@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <!-- Bootstrap framework -->
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" />
+</head>
+<body ng-app="momSpinnerApp" class="container=">
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h1>momSpinner Angular Directive Example</h1>
+        <h4>by Mike Evans</h4>
+        <p>This directive lets you control a spinner through the use of a mom-spinner element. You can pass an asynchronous function
+        to the mom-spinner element via the mom-spinner-fn attribute that waits for a response (e.g. from a server, or with this example,
+        from a simple timer).
+        </p>
+        <p>As soon as the mom-spinner element is clicked, the asynchronous function is called with parameters passed in as an
+        object via the mom-spinner-fn-param attribute. In this case, the parameters tell the asyncFn what icon to use when
+        it returns.
+        </p>
+        <p>The asyncFn must return a promise. The promise's then() function can return an icon name as a string, and this will
+        be used as the final icon once the promise completes. If no icon name is returned, the original icon defined in
+        mom-start-icon will be used as a default.
+        </p>
+        <p>
+        You can trigger a spinner either by clicking on its icon or by broadcasting a startSpinner event. In this example,
+        you can click on individual mom-spinner elements to set them spinning individually, or trigger them all to spin
+        at once by clicking the "Spin all cells" button below.
+        </p>
+        <div ng-controller="SpinnerCtrl">
+
+            <table class="table table-condensed table-bordered table-striped">
+                <thead>
+                    <th>User</th>
+                    <th>Is Permitted</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Joe Bloggs</td>
+                        <td><mom-spinner mom-start-icon="'glyphicon glyphicon-ok'"  mom-spinner-tag="cell" mom-spinner-fn="model.asyncFn"
+                                         mom-spinner-fn-params="{'icon-end':'glyphicon glyphicon-ok-sign', 'cell-name': 'Joe Bloggs'}"></mom-spinner></td>
+                    </tr>
+                    <tr>
+                        <td>Keith Chegwin</td>
+                        <td><mom-spinner mom-start-icon="'glyphicon glyphicon-ok'"  mom-spinner-tag="cell" mom-spinner-fn="model.asyncFn"
+                                         mom-spinner-fn-params="{'icon-end': 'glyphicon glyphicon-ban-circle', 'cell-name': 'Keith Chegwin'}"></mom-spinner></td>
+                    </tr>
+                    <tr>
+                        <td>Kevin Bacon</td>
+                        <td><mom-spinner mom-start-icon="'glyphicon glyphicon-ok'"  mom-spinner-id="KevinBacon" mom-spinner-tag="cell" mom-spinner-fn="model.asyncFn"
+                                         mom-spinner-fn-params="{'icon-end': 'glyphicon glyphicon-ok-sign', 'cell-name': 'Kevin Bacon'}"></mom-spinner></td>
+                    </tr>
+                    <tr>
+                        <td>Alex Salmon</td>
+                        <td><mom-spinner mom-start-icon="'glyphicon glyphicon-ok'"  mom-spinner-tag="cell" mom-spinner-fn="model.asyncFn"
+                                         mom-spinner-fn-params="{'icon-end': 'glyphicon glyphicon-ban-circle', 'cell-name': 'Alex Salmon'}"></mom-spinner></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>&nbsp;</div>
+
+            <button class="btn btn-lg" ng-click="model.spinAllCells()">Spin all cells</button>
+            <button class="btn btn-lg" ng-click="model.spinKevinBacon()">Spin Kevin Bacon</button>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
+<script src="app.js"></script>
+<script src="directives.js"></script>
+</body>
+</html>
