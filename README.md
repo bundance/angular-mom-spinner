@@ -36,15 +36,15 @@ tag name will begin spinning. If you broadcast a startSpinner event with a spinn
 mom-spinner element with that tag name will begin spinning.
 
 ##Usage##
-`<mom-spinner`
+```<mom-spinner
      mom-start-icon="startIcon"
      mom-spinner-icon="spinnerIcon"
      mom-spinner-fn="asynchronousFunction"
      mom-spinner-fn-params="{name1: value1, name2: value2...nameN: valueN}"
      mom-spinner-tag="spinnerTag"
      mom-spinner-id="spinnerId">
-`</mom-spinner>`
-
+</mom-spinner>
+```
 ##Defaults##
 Default spinner icon: "icon-spin icon-refresh" (requires the [font-awesome stylesheet] (http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css))
 
