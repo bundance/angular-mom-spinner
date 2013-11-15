@@ -2,16 +2,16 @@
 #momSpinner - AngularJS Directive#
 
 The momSpinner directive defines the mom-spinner element, which replaces a starting icon with a spinning icon
-whenever it is clicked or is triggered by a 'startSpinner' event.
+whenever it is clicked or is triggered by a `startSpinner` event.
 
 ##Overview##
-The mom-spinner element indicates to the user that an asynchronous function (the "mom-spinner-fn") is working. Once this
+The mom-spinner element indicates to the user that an asynchronous function (`mom-spinner-fn`) is working. Once this
 function completes, the mom-spinner element's icon will return either to its original static icon, or to a new icon
 returned from the mom-spinner-fn.
 
 Unlike other spinner directives, you supply the mom-spinner-fn to the mom-spinner element, passing in
 the name of this function and its parameters as attributes to the mom-spinner element. When the
-element is clicked (or a 'startSpinner' event is broadcast - see below), this mom-spinner-fn is called and
+element is clicked (or a `startSpinner` event is broadcast - see below), this mom-spinner-fn is called and
 the current icon is replaced with a spinning icon.
 
 ##The mom-spinner-fn##
@@ -22,21 +22,14 @@ The promise's function can return an icon name, and this icon will be displayed 
 promise completes. If the promise does not return an icon value, the starting icon value will be used instead.
 
 ##Icons##
-The template used by the directive renders the icons via an <i> element. Specficially, the template's HTML is rendered
-as follows:
-
-<i class="icon-name"></i>
+The template used by the directive renders the icons via an `<i>` element. Specficially, the template's HTML is rendered
+as `<i class="icon-name"></i>`
 
 If you're using Twitter Bootstrap, the icon name can therefore be any of Bootstrap's Glyphicon icons.
 
-##Remotely triggering the mom-spinner element with the startSpinner Event##
-You can remotely trigger each mom-spinner element by broadcasting a 'startSpinner' event with either a tag name
-or an id. If you broadcast a startSpinner event with a spinnerTag parameter then every mom-spinner element with that
-tag name will begin spinning. If you broadcast a startSpinner event with a spinnerId parameter then only that
-mom-spinner element with that tag name will begin spinning.
-
 ##Usage##
-```<mom-spinner
+```
+<mom-spinner
      mom-start-icon="startIcon"
      mom-spinner-icon="spinnerIcon"
      mom-spinner-fn="asynchronousFunction"
@@ -54,9 +47,9 @@ Default spinner icon: "icon-spin icon-refresh" (requires the [font-awesome style
 Defines the icon that should appear before the mom-spinner-fn is called. Note that this value should be enclosed in
 single quotes inside the attributes existing double quotes.
 
-e.g. if your icon name is icon-ok, then your mom-start-icon should be defined as:
+e.g. if your icon name is `icon-ok`, then your mom-start-icon should be defined as `mom-start-icon="'icon-ok'"`
 
-mom-start-icon="'icon-ok'"
+
 
 ###mom-spinner-icon###
 The CSS class name representing a spinner icon you want to use if you don't want to use the default.
@@ -80,9 +73,27 @@ An identifier that identifies this mom-spinner element uniquely. A startSpinner 
 element and only this mom-spinner element.
 
 ##Example##
- `<mom-spinner`
+ ```
+ <mom-spinner
         mom-start-icon="'glyphicon glyphicon-ok'"
         mom-spinner-fn="model.asyncFn"
         mom-spinner-fn-params="{'icon-end':'glyphicon glyphicon-ok-sign', 'cell-name': 'Joe Bloggs'}"
         mom-spinner-tag="'icon-spin icon-refresh'">
- `</mom-spinner>`
+ </mom-spinner>
+ ```
+##Remotely triggering the mom-spinner element with the startSpinner Event##
+You can remotely trigger each mom-spinner element by broadcasting a `startSpinner` event with either a tag name
+or an id. If you broadcast a startSpinner event with a `spinnerTag` parameter, then every mom-spinner element with that
+tag name will begin spinning. If you broadcast a startSpinner event with a `spinnerId` parameter then only that
+mom-spinner element with that tag name will begin spinning.
+
+###Example of using startSpinner event##
+###Broadcast the event with a tag###
+```
+$scope.$broadcast('startSpinner', {spinnerTag: 'tagName'}, {'param1': 'param1Value'});
+```
+
+###Broadcast the event with an id###
+```
+$scope.$broadcast('startSpinner', {spinnerId: 'id'}, {'param1': 'param1Value'});
+```
