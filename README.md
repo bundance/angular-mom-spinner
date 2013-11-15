@@ -85,8 +85,8 @@ element and only this mom-spinner element.
  </mom-spinner>
  ```
 
-Also, see index.html and app.js for examples of using the directive in your HTML, and defining the 'mom-spinner-fn'.
- 
+Also, see `index.html` and `app.js` for examples of using the directive in your HTML, and defining the `mom-spinner-fn`.
+
 ##Remotely triggering the mom-spinner element with the startSpinner Event##
 You can remotely trigger each mom-spinner element by broadcasting a `startSpinner` event with either a tag name
 or an id. If you broadcast a startSpinner event with a `spinnerTag` parameter, then every mom-spinner element with that
