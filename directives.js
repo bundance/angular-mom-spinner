@@ -51,7 +51,6 @@ var momentumUIApp = angular.module('momUI', []);
  * @priority 800
  * @default Default spinner icon: "icon-spin icon-refresh" (requires font-awesome stylesheet:
  *                          http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css)
- * @param {module:mom-spinner#event:startSpinner} e - a startSpinner event.
  * @listens module:mom-spinner#startSpinner
  * @paramDescription
  * On the mom-spinner element add:
